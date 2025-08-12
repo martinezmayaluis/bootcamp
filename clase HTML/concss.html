@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imagenes</title>
+
+    <style>
+       .container {
+      position: relative;
+      border: 10px solid black;
+      height: 610px;
+      width: 610px;
+      margin: auto;
+    }
+
+    .container img {
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      transition: opacity 0.3s ease;
+    }
+
+    .image1 { top: 5px; left: 5px; }
+    .image2 { top: 105px; left: 105px; }
+    .image3 { top: 205px; left: 205px; }
+    .image4 { top: 305px; left: 305px; }
+    .image5 { top: 405px; left: 405px; }
+
+    .image1:hover ~ .image2,
+    .image1:hover ~ .image3,
+    .image1:hover ~ .image4,
+    .image1:hover ~ .image5 {
+      opacity: 0;
+    }
+
+    .image2:hover ~ .image3,
+    .image2:hover ~ .image4,
+    .image2:hover ~ .image5 {
+      opacity: 0;
+    }
+
+    .image3:hover ~ .image4,
+    .image3:hover ~ .image5 {
+      opacity: 0;
+    }
+
+    
+    .image4:hover ~ .image5 {
+      opacity: 0;
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    
+        <img src="orquidea.jpg" class="image1">
+        <img src="jacinto.jpg" class="image2">
+        <img src="crisantemo.jpg" class="image3">
+        <img src="petunia.jpg" class="image4">
+        <img src="sakura.jpg" class="image5">
+        
+    </div>
+</body>
+</html>

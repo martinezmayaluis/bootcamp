@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p id="cosito"></p>
+
+    <p id ="Mynum"></p>
+
+
+    <script>
+        
+        function Actualizar(id, contenido){
+
+            const elemento = document.getElementById("cosito");
+
+            if (elemento){
+                elemento.innerHTML = Math.floor(Math.random() * 100) + 1;
+            } else{
+                console.warn("No se encontro el elemento")
+            }
+
+        }
+
+        Actualizar("cosito", Math.floor(Math.random() * 100) + 1)
+
+        function Aleatorio(id, numero){
+
+            const elemento = document.getElementById("Mynum")
+
+            
+
+        }
+        </script>
+</body>
+</html>

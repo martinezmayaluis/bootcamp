@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Nim {
     public static void main(String[] args) {
         
-        boolean bandera = false;
+        boolean flag = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el nombre de Jugador 1");
 
@@ -34,7 +34,7 @@ public class Nim {
 
             if (!A.getEstado() && !B.getEstado() && !C.getEstado()) {
                 System.out.println(jugadorActual.getNombre()+", ya no quedan contadores, Ganaste!");
-                bandera = true;
+                flag = true;
             }else{
                 turno++;
                 if(turno % 2 == 0){
@@ -44,14 +44,14 @@ public class Nim {
                 }
             }
 
-        }while(!bandera);
+        }while(!flag);
         scanner.close();  
     }
 
 
     private static String leerPila(Pila A, Pila B, Pila C){
          Scanner scanner = new Scanner(System.in);
-         boolean bandera = false;
+         boolean flag = false;
          String pilaSec = "";
 
         do{
@@ -63,7 +63,7 @@ public class Nim {
                     break;
                     }
                     pilaSec = pila;
-                    bandera = true;
+                    flag = true;
                     break;
                 case "B":
                 
@@ -72,7 +72,7 @@ public class Nim {
                         break;
                     }
                     pilaSec = pila;
-                    bandera = true;
+                    flag = true;
                     break;
                 case "C":    
 
@@ -81,13 +81,13 @@ public class Nim {
                         break;
                     }
                     pilaSec = pila;
-                    bandera = true;
+                    flag = true;
                     break;
                 default: 
                     System.out.println("Pila no valida. Intentar de nuevo: "); 
                     break;   
             }
-        }while (!bandera);
+        }while (!flag);
         return pilaSec;
         
             
@@ -96,7 +96,7 @@ public class Nim {
     
     private static void reducirContadores(String pila, Pila A, Pila B, Pila C){
         Scanner scanner = new Scanner(System.in);
-        boolean bandera = false;
+        boolean flag = false;
         
         do{
             System.out.println("Cuanto quitaras de la pila "+pila);
@@ -106,21 +106,21 @@ public class Nim {
                 switch (pila) {
                     case "A":
                         A.reducirPila(cantidad);
-                        bandera = true;
+                        flag = true;
                         break;
                     case "B":
                         B.reducirPila(cantidad);
-                        bandera = true;
+                        flag = true;
                         break;
                     case "C":
                         C.reducirPila(cantidad);
-                        bandera = true;
+                        flag = true;
                         break;    
                 }
             }else{
                 System.out.println("Cantidad no valida");
             }
-        }while(!bandera);
+        }while(!flag);
     }
 
 }

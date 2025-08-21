@@ -1,0 +1,85 @@
+import java.util.*;
+
+public class VacasYToros {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String secreto = generarNumeroSecreto();
+        int intentos = 0;
+
+        System.out.println("¡Bienvenido a Vacas y Toros!");
+        System.out.println("Adivina el número secreto de 4 cifras distintas.");
+
+        while (true) {
+            System.out.print("Ingresa tu intento: ");
+            String intento = scanner.nextLine();
+
+            if (!esValido(intento)) {
+                System.out.println("Entrada inválida. Debe ser un número de 4 cifras distintas.");
+                continue;
+            }
+
+            intentos++;
+            int toros = contarToros(secreto, intento);
+            int vacas = contarVacas(secreto, intento);
+
+            if (toros == 4) {
+                System.out.println("¡Felicidades! Adivinaste el número en " + intentos + " intentos.");
+                break;
+            } else {
+                System.out.println(toros + " toros, " + vacas + " vacas.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    // Genera un número secreto de 4 cifras distintas
+    private static String generarNumeroSecreto() {
+        Random rand = new Random();
+        Set<Integer> cifras = new LinkedHashSet<>();
+        while (cifras.size() < 4) {
+            cifras.add(rand.nextInt(10));
+        }
+
+        StringBuilder numero = new StringBuilder();
+        for (int cifra : cifras) {
+            numero.append(cifra);
+        }
+        return numero.toString();
+    }
+
+    // Verifica que el intento sea válido (4 cifras distintas)
+    private static boolean esValido(String intento) {
+        if (intento.length() != 4 || !intento.matches("\\d+")) {
+            return false;
+        }
+        Set<Character> unicos = new HashSet<>();
+        for (char c : intento.toCharArray()) {
+            unicos.add(c);
+        }
+        return unicos.size() == 4;
+    }
+
+    // Cuenta los toros (cifras correctas en la posición correcta)
+    private static int contarToros(String secreto, String intento) {
+        int toros = 0;
+        for (int i = 0; i < 4; i++) {
+            if (secreto.charAt(i) == intento.charAt(i)) {
+                toros++;
+            }
+        }
+        return toros;
+    }
+
+    // Cuenta las vacas (cifras correctas en posición incorrecta)
+    private static int contarVacas(String secreto, String intento) {
+        int vacas = 0;
+        for (int i = 0; i < 4; i++) {
+            char c = intento.charAt(i);
+            if (secreto.indexOf(c) != -1 && secreto.charAt(i) != c) {
+                vacas++;
+            }
+        }
+        return vacas;
+    }
+}
